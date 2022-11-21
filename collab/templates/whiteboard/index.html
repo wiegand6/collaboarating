@@ -8,6 +8,32 @@
 {% block title %}whiteboard{% endblock %}
 {#    <canvas class="whiteboard"></canvas>#}
 {% block content %}
+    <nav id="drawing-controls">
+        <!--<button id="test-button">try me</button>-->
+        <label class="drawing-control" for="draw-width">Brush Width:</label>
+        <input class="drawing-control" id="draw-width" type="number" value="2">
+        <label for="color-select">Color:</label>
+        <select id="color-select">
+            <option>black</option>
+            <option>gray</option>
+            <option>white</option>
+            <option>red</option>
+            <option>orange</option>
+            <option>yellow</option>
+            <option>green</option>
+            <option>blue</option>
+            <option>purple</option>
+            <option>brown</option>
+        </select>
+        <label for="shape-select">Shape:</label>
+        <select id="shape-select">
+            <option>Free Hand</option>
+            <option>Straight Line</option>
+            <option>Rectangle</option>
+            <option>Triangle</option>
+            <option>Ellipse</option>
+        </select>
+    </nav>
     <canvas class="whiteboard"></canvas>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/js.js') }}"></script>
