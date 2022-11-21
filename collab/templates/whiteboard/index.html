@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{#{% block js_base %}#}
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+{#    <script src="{{ url_for('static', filename='js/js.js') }}"></script>#}
+{#{% endblock %}#}
+
+{% block title %}whiteboard{% endblock %}
+{#    <canvas class="whiteboard"></canvas>#}
+{% block content %}
+    <canvas class="whiteboard"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/js.js') }}"></script>
+
+{% endblock %}

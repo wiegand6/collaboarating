@@ -1,0 +1,4 @@
+include collab/schema.sql
+graft collab/static
+graft collab/templates
+global-exclude *.pyc
