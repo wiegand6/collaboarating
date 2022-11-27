@@ -31,9 +31,8 @@ input[type=submit] { align-self: start; min-width: 10em; }
 
 html, body {
     height: 100%;
-    margin: 0;
     padding: 0;
-    background-color: aqua;
+    background-color: white;
 }
 
 .whiteboard {
@@ -44,13 +43,14 @@ html, body {
     right: 0;
     bottom: 0;
     top: 70px;
+    solid #000;
 }
 
 #drawing-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: lightgray;
 }
 
 #draw-width {

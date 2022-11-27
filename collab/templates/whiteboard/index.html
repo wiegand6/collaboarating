@@ -10,10 +10,10 @@
 {% block content %}
     <nav id="drawing-controls">
         <!--<button id="test-button">try me</button>-->
-        <label class="drawing-control" for="draw-width">Brush Width:</label>
-        <input class="drawing-control" id="draw-width" type="number" value="2">
-        <label for="color-select">Color:</label>
-        <select id="color-select">
+        <label for="draw-width" class="drawing-control">Brush Width:</label>
+        <input id="draw-width" type="number" value="2" class="drawing-control">
+        <label for="color-select" class="drawing-control">Color:</label>
+        <select id="color-select" class="drawing-control">
             <option>black</option>
             <option>gray</option>
             <option>white</option>
@@ -25,16 +25,20 @@
             <option>purple</option>
             <option>brown</option>
         </select>
-        <label for="shape-select">Shape:</label>
-        <select id="shape-select">
+        <label for="shape-select" class="drawing-control">Shape:</label>
+        <select id="shape-select" class="drawing-control">
             <option>Free Hand</option>
             <option>Straight Line</option>
             <option>Rectangle</option>
             <option>Triangle</option>
             <option>Ellipse</option>
+            <option>Insert Image</option>
         </select>
+        <label for="image-input" class="drawing-control">Upload: </label>
+        <input type="file" id="image-input" accept = "image/*">
     </nav>
-    <canvas class="whiteboard"></canvas>
+    <canvas id="display" class="whiteboard"></canvas>
+    <canvas id="preview" class="whiteboard"></canvas>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/js.js') }}"></script>
 
