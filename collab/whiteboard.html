@@ -35,9 +35,28 @@
   <link rel="stylesheet" href="css/css-circular-prog-bar.css">
 
 
+
+<!--Promts the user for a username-->
+  <script>
+    function PromptForUserName(){
+      let Username = prompt("Please enter your first name");
+      
+      if (Username == null || Username == "") {
+        window.alert("Please enter in your username.")}
+        document.getElementById("Username").innerHTML = Username;
+    }
+    function CreateRoomID(){
+      let NewRoomID = Math.floor(Math.random() * 1000) +1;
+      document.getElementById("NewRoomID").innerHTML = NewRoomID;
+      localStorage.setItem("NewRoomID",getInput);
+    }
+  </script>
+
 </head>
 
-<body>
+<body onload="PromptForUserName(); CreateRoomID();">
+  <h1>Hello <span id="Username"></span></h1> 
+  <h3>Your Room ID is: <span id="NewRoomID"></span></h3>
   <div class="top_container sub_pages">
     <!-- header section strats -->
     <header class="header_section">
@@ -84,12 +103,12 @@
         </nav>
       </div>
     </header>
-
+    
   </div>
       
       
-      
-      
+     
+
       
       
       

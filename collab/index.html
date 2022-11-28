@@ -122,17 +122,21 @@
       <p class="text-right" text-align="right">
         <form align="Right">
           <label for="RoomID">Join a Room with the ID: </label> <br>
-          <input type="text" id="RoomIDInput" RID="RoomID">
+          <input type="text" id="RoomIDInput">
           <button type="submit">Join</button> <!--this button needs to add the current user to the whiteboard with this ID-->
           <!--Add a check to see if the user is logged in or not-->
           <br>
-          Or 
+          
           <br>
            <!--For some reason, this is not redirecting towards the whiteboard when clicked. Will  need to make this button create a new whiteboard with the user that click on it as the hsot. -->
-          <form action="whiteboard.html">
-          <input type="submit" value= "Create a new board" /> <!--Will need to give out random strings/numbers that will be the RoomID-->
-          </form>
           
+          
+          
+          </form>
+          <p class="text-right" text-align="right">
+          <form align=-Right" action="whiteboard.html">
+            <input type="submit" value= "Create a new board" /> <!--Will need to give out random strings/numbers that will be the RoomID-->
+          </p>
           
           </form>
       </p>
