@@ -1,0 +1,129 @@
+<body>
+    <div class="top-bar">
+        <h1>
+            Forums
+        </h1>
+    </div>
+    <div class="main">
+        <ol>
+        </ol>
+    </div>
+   
+    <script src="data.js"></script>
+    <script>
+        //populates the page with previous data currently stored in the database assuming the user joins late
+        console.log(threads);
+        var container = document.querySelector('ol');
+        for (let thread of threads) {
+            var html = `
+            <li class="row">
+                <a href="/thread.html?${thread.id}">
+                    <h4 class="title">
+                        ${thread.title}
+                    </h4>
+                    <div class="bottom">
+                        <p class="timestamp">
+                            ${new Date(thread.date).toLocaleString()}
+                        </p>
+                        <p class="comment-count">
+                            ${thread.comments.length} comments
+                        </p>
+                    </div>
+                </a>
+            </li>
+            `
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        var id = window.location.search.slice(1);
+        var thread = threads.find(t => t.id == id);
+        var header = document.querySelector('.header');
+        var headerHtml = `
+            <h4 class="title">
+                ${thread.title}
+            </h4>
+            <div class="bottom">
+                <p class="timestamp">
+                    ${new Date(thread.date).toLocaleString()}
+                </p>
+                <p class="comment-count">
+                    ${thread.comments.length} comments
+                </p>
+            </div>
+        `
+        header.insertAdjacentHTML('beforeend', headerHtml)
+        //Function for a user to add a thread to the page, currently does not work and is still in testing + needs error handling
+        function addThread(comment) {
+            var threadHtml = `
+                <div class="thread">
+                    <div class="top-thread">
+                        <p class="user">
+                            ${thread.author}
+                        </p>
+                        <p class="post-ts">
+                            ${new Date(thread.date).toLocaleString()}
+                        </p>
+                    </div>
+                    <div class="thread-content">
+                        ${thread.content}
+                    </div>
+                </div>
+            `
+            comments.insertAdjacentHTML('beforeend', postHtml);
+        }
+
+        var threads = document.querySelector('.post');
+        for (let thread of thread) {
+            addThread(thread);
+        }
+
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            var txt = document.querySelector('textarea');
+            var thread = {
+                content: txt.value,
+                date: Date.now(),
+                author: 'Cody'
+            }
+            addThread(thread);
+            txt.value = '';
+            thread.posts.push(post);
+            localStorage.setItem('threads', JSON.stringify(threads));
+        })
+    </script>
+    <style>
+        body {
+            margin: 10px 60px;
+            background-color: antiquewhite
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        h1, h4, ol {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .top-bar {
+            background-color: darkorange;
+            padding: 0 40px;
+        }
+        .main {
+            background-color: beige;
+            padding: 10px 15px;
+        }
+        .row {
+            padding: 5px 0;
+        }
+        .bottom {
+            display: flex;
+            color: gray;
+            font-size: 12px;
+        }
+        .timestamp {
+            padding-right: 10px;
+        }
+    </style>
+</body>
