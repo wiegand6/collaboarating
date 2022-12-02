@@ -27,17 +27,21 @@
         socket.on('message', function(data) {
             $('#messages').append($('<p>').text(data));
 
+            //automatically scrolls down if new message content exceeds height of div
+            $('#messages').scrollTop($(document).height());
+
         });
 
 
         //functionality for send button press
         $('#sendBtn').on('click', function() {
 
-            //sends nothing if input box is empty or only spaces
+            //sends nothing if message box is empty or only spaces
 
             if ($('#message').val().trim() == "") {
             //clears message box if it only contains spaces and no other characters
             $('#message').val('');
+            } else if ($('#username').val().trim() =="") {
             } else {
                 socket.send($('#username').val() + ': ' + $('#message').val());
                 $('#message').val('');
@@ -62,13 +66,12 @@
 </script>
 
 
-<div id="messages">
+<div id="messages" style="height:400px; width:600px; padding:5px; overflow-y:auto; border-style:solid;">
 
 </div>
-
-
-<input type="text" id="username" placeholder="Username">
-<input type="text" id="message" placeholder="Message">
+<input type="text" id="username" placeholder="Username" style="margin-top:5px;">
+<br />
+<textarea  id="message" placeholder="Message" style="height:100px; width: 610px; margin-top:5px; resize:none;"></textarea>
 <button id="sendBtn">Send</button>
 
 
