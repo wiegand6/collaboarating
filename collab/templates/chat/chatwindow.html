@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat room</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+
+<body>
+
+
+<script type="text/javascript">
+
+    //connected to localhost for testing purposes
+    //connects user to socket on page load, sends a message for debug
+    $(document).ready(function() {
+        var socket = io.connect('http://127.0.0.1:5000');
+             //on connect execute code, sends message
+        socket.on('connect', function() {
+            socket.send('User connected!');
+        });
+
+
+        //function takes message as a parameter, adds message to div container 'messages'
+        socket.on('message', function(data) {
+            $('#messages').append($('<p>').text(data));
+
+        });
+
+
+        //functionality for send button press
+        $('#sendBtn').on('click', function() {
+
+            //sends nothing if input box is empty or only spaces
+
+            if ($('#message').val().trim() == "") {
+            //clears message box if it only contains spaces and no other characters
+            $('#message').val('');
+            } else {
+                socket.send($('#username').val() + ': ' + $('#message').val());
+                $('#message').val('');
+                //clears message input box when user sends a message
+            }
+        });
+
+
+        //adds functionality to send message on enter key
+        // track inputs to message box
+        var input = document.getElementById("message");
+
+        // clicks enter button when the user hits enter
+        input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+            $('#sendBtn').click();
+  }
+});
+    });
+
+</script>
+
+
+<div id="messages">
+
+</div>
+
+
+<input type="text" id="username" placeholder="Username">
+<input type="text" id="message" placeholder="Message">
+<button id="sendBtn">Send</button>
+
+
+</body>
+</html>

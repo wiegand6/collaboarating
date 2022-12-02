@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_socketio import SocketIO, send
 
 # create and configure the app
 app = Flask(__name__, instance_relative_config=True)
@@ -34,6 +35,23 @@ from . import whiteboard
 
 app.register_blueprint(whiteboard.bp)
 app.add_url_rule('/', endpoint='index')
+
+from . import chat
+
+app.register_blueprint(chat.bp)
+socketio = SocketIO(app, cors_allowed_origins="*")
+socketio.run(app)
+
+
+# on the event message the code executes
+@socketio.on('message')
+def handle_message(message):
+    print("Received message: " + message)
+    # if the message is not empty, and it is not the default connected message then and only then do we send the msg
+    if message != "User connected!":
+        send(message, broadcast=True)
+        # broadcast sends message to everyone
+
 #
 # def create_app():
 #     # create and configure the app
