@@ -14,7 +14,7 @@
     </div>
     <script src="data.js"></script>
     <script>
-        //pulls data about currently selected thread from database
+        //pulls data out from currently selected thread from database
         var id = window.location.search.slice(1);
         var thread = threads.find(t => t.id == id);
         var header = document.querySelector('.header');

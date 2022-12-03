@@ -34,6 +34,10 @@ from . import whiteboard
 
 app.register_blueprint(whiteboard.bp)
 app.add_url_rule('/', endpoint='index')
+
+from . import forum
+
+app.register_blueprint(forum.bp)
 #
 # def create_app():
 #     # create and configure the app
