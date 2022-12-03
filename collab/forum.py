@@ -12,3 +12,8 @@ def forum():
     # serve forumpage.html
     return render_template("forum/forumpage.html")
 
+
+@bp.route('/thread', methods=('GET', 'POST'))
+def thread():
+    # server threads
+    return render_template("forum/thread.html")

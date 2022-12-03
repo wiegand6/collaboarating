@@ -1,77 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thread</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 <body>
     <div class="top-bar">
         <h1>
-            <a href="index.html">Forums</a>
+            <a href="forumpage">Thread</a>
         </h1>
     </div>
     <div class="main">
         <div class="header">
         </div>
-        <textarea></textarea>
-        <button>add comment</button>
+        <input type="text" id="username" placeholder="Username" style="margin-bottom:5px;">
+        <br />
+        <textarea id="comment" placeholder="Comment text"></textarea>
+        <button id ="postBtn" onclick="addComment()">add comment</button>
         <div class="comments">
+        <ol>
+        </ol>
         </div>
+        <a href="forumpage" class="button">Back to main</a>
     </div>
-    <script src="data.js"></script>
     <script>
-        //pulls data out from currently selected thread from database
-        var id = window.location.search.slice(1);
-        var thread = threads.find(t => t.id == id);
-        var header = document.querySelector('.header');
-        var headerHtml = `
-            <h4 class="title">
-                ${thread.title}
-            </h4>
-            <div class="bottom">
-                <p class="timestamp">
-                    ${new Date(thread.date).toLocaleString()}
-                </p>
-                <p class="comment-count">
-                    ${thread.comments.length} comments
-                </p>
+        function addComment() {
+
+        //vars for current date
+        const timeElapsed = Date.now();
+        const timeNow = new Date(timeElapsed)
+
+            var container = document.querySelector('ol')
+
+            var postHtml = `
+            <div class="post">
+            <p>${$('#comment').val()}</p>
+                 <div class="bottom">
+                 <p class="name">${$('#username').val()}</p>
+                 <p class="timestamp">
+                 ${timeNow.toLocaleString()}
+                 </p>
+                 </div>
             </div>
-        `
-        header.insertAdjacentHTML('beforeend', headerHtml)
-            //function to add comments to current thread, NEEDS ERROR HANDLING
-        function addComment(comment) {
-            var commentHtml = `
-                <div class="comment">
-                    <div class="top-comment">
-                        <p class="user">
-                            ${comment.author}
-                        </p>
-                        <p class="comment-ts">
-                            ${new Date(comment.date).toLocaleString()}
-                        </p>
-                    </div>
-                    <div class="comment-content">
-                        ${comment.content}
-                    </div>
-                </div>
             `
-            comments.insertAdjacentHTML('beforeend', commentHtml);
-        }
-
-        var comments = document.querySelector('.comments');
-        for (let comment of thread.comments) {
-            addComment(comment);
-        }
-
-        var btn = document.querySelector('button');
-        btn.addEventListener('click', function() {
-            var txt = document.querySelector('textarea');
-            var comment = {
-                content: txt.value,
-                date: Date.now(),
-                author: 'Cody'
-            }
-            addComment(comment);
-            txt.value = '';
-            thread.comments.push(comment);
-            localStorage.setItem('threads', JSON.stringify(threads));
-        })
+            container.insertAdjacentHTML('beforeend', postHtml);
+        };
     </script>
     <style>
+        .button{
+        border-radius: 3px;
+        border: 2px solid;
+        background-color: white;
+        }
+         .name
+        {
+        margin-right:5px;
+        }
         body {
             margin: 10px 60px;
             background-color: antiquewhite
@@ -124,3 +109,4 @@
         }
     </style>
 </body>
+</html>
