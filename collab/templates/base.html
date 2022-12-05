@@ -1,19 +1,15 @@
-{#{% extends "bootstrap/base.html" %}#}
-
 <!DOCTYPE html>
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Site Metas -->
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
     <title>Collaboarating</title>
-
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
     <!-- progress barstle -->
@@ -26,96 +22,64 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
-
     <link rel="stylesheet" href="static/css/css-circular-prog-bar.css" />
 </head>
 
 <title>{% block title %}{% endblock %} - Collaboarating</title>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 {% block navbar %}
     <div class="top_container sub_pages">
         <!-- header section strats -->
         <header class="header_section">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg custom_nav-container">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="/static/images/logo.png" alt="" />
-                        <span>
-                            Collaboarating
-                        </span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                            <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item active">
-                                                    <a class="nav-link" href="index.html"> Home <span class="sr-only">(current)</span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ url_for('whiteboard.index') }}"> Whiteboard </a>
-                                                </li>
 
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="chat.html"> Chat </a>
-                                                </li>
+                <! -- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- >
+            <nav class="navbar navbar-expand-lg bg-info">
+                <div class="container-fluid">
 
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="forum.html"> Forum </a>
-                                                </li>
+                 <a href="#" class="navbar-brand">
+                     <img src="/static/images/logo.png" alt="CollabLogo">
+                     Collaboarating
+                 </a>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Whiteboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Chat</a>
 
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="breakout.html"> Breakout Rooms </a>
-                                                    {% if g.user %}
-                                                </li>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Forum</a>
+                        </li>
+                    </ul>
+                </div>
 
-                                                <li class="nav-item"><span>{{ g.user['username'] }}</span></li>
-                                                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a> {% else %}</li>
+            <! --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            </ul>
+            </nav>
 
-                                                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">Register</a></li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
-                                                    {% endif %}
-                                                </li>
-                                            </ul>
-
-                                            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                                            </form>
-                                        </div>
-
-
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
         </header>
     </div>
- {% endblock %}
+{% endblock %}
                                         <!-- end header section -->
 
 
 
- <section class="content">
-                                            <header>
-                                                {% block header %}{% endblock %}
-                                            </header>
-                                            {% for message in get_flashed_messages() %}
-                                            <div class="flash">{{ message }}</div>
-                                            {% endfor %} {% block content %}{% endblock %}
-                                        </section>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %} {% block content %}{% endblock %}
+</section>
 
 {% block js_base %}
-    <script type="text/javascript" src={{ url_for("static", filename="js/jquery-3.4.1.min.js") }}></script>
-    <script type="text/javascript" src={{ url_for("static", filename="js/bootstrap.js") }}></script>
+<script type="text/javascript" src={{ url_for("static", filename="js/jquery-3.4.1.min.js") }}></script>
+<script type="text/javascript" src={{ url_for("static", filename="js/bootstrap.js") }}></script>
 
 {% endblock %}
