@@ -30,8 +30,10 @@
         const timeElapsed = Date.now();
         const timeNow = new Date(timeElapsed)
 
+            //targets ol for injection
             var container = document.querySelector('ol')
 
+            //adds post to document
             var postHtml = `
             <div class="post">
             <a href="thread">
@@ -46,6 +48,10 @@
             </div>
             `
             container.insertAdjacentHTML('beforeend', postHtml);
+
+            //clears title and forumtext windows on send
+            $('#title').val('');
+            $('#forumtext').val('');
         };
 
     </script>

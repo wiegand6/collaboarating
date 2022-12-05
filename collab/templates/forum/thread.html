@@ -31,8 +31,10 @@
         const timeElapsed = Date.now();
         const timeNow = new Date(timeElapsed)
 
+            //targets ol for injection
             var container = document.querySelector('ol')
 
+            //html to inject
             var postHtml = `
             <div class="post">
             <p>${$('#comment').val()}</p>
@@ -44,7 +46,11 @@
                  </div>
             </div>
             `
+            //inserts html at the end of the ol
             container.insertAdjacentHTML('beforeend', postHtml);
+
+            //clears comment textarea on send
+            $('#comment').val('');
         };
     </script>
     <style>
