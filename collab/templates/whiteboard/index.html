@@ -8,12 +8,12 @@
 {% block title %}whiteboard{% endblock %}
 {#    <canvas class="whiteboard"></canvas>#}
 {% block content %}
-    <nav id="drawing-controls">
-        <!--<button id="test-button">try me</button>-->
-        <label for="draw-width" class="drawing-control">Brush Width:</label>
-        <input id="draw-width" type="number" value="2" class="drawing-control">
-        <label for="color-select" class="drawing-control">Color:</label>
-        <select id="color-select" class="drawing-control">
+    <div id="drawing-controls">
+        <label for="draw-width" class="drawing-controls">Brush Width:</label>
+        <input id="draw-width" type="number" value="2" class="drawing-controls">
+        <span></span>
+        <label for="color-select" class="drawing-controls">Color:</label>
+        <select id="color-select" class="drawing-controls">
             <option>black</option>
             <option>gray</option>
             <option>white</option>
@@ -25,8 +25,9 @@
             <option>purple</option>
             <option>brown</option>
         </select>
-        <label for="shape-select" class="drawing-control">Shape:</label>
-        <select id="shape-select" class="drawing-control">
+        <span></span>
+        <label for="shape-select" class="drawing-controls">Shape:</label>
+        <select id="shape-select" class="drawing-controls">
             <option>Free Hand</option>
             <option>Straight Line</option>
             <option>Rectangle</option>
@@ -34,9 +35,18 @@
             <option>Ellipse</option>
             <option>Insert Image</option>
         </select>
-        <label for="image-input" class="drawing-control">Upload: </label>
+        <span></span>
+        <label for="image-input" class="drawing-controls">Upload: </label>
         <input type="file" id="image-input" accept = "image/*">
-    </nav>
+        <span></span>
+        <label for="width-control" class="drawing-controls">Canvas Width: </label>
+        <input id="width-control" type="number" class="drawing-controls">
+        <span></span>
+        <label for="height-control" class="drawing-controls">Canvas Height: </label>
+        <input id="height-control" type="number" class="drawing-controls">
+        <span></span>
+        <button id="resize-button">Change</button>
+    </div>
     <canvas id="display" class="whiteboard"></canvas>
     <canvas id="preview" class="whiteboard"></canvas>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
