@@ -2,7 +2,6 @@
 
 @media (max-width: 992px) {
 
-
     .top_container {
         height: auto;
     }
@@ -16,9 +15,7 @@
     }
 
     .client_box-container {
-
         width: 90%;
-
     }
 
     .service_detail-container {
