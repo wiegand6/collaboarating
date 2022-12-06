@@ -7,43 +7,101 @@
 </head>
 <body>
   <div class="posts">
-        <table class="forumposts">
-            <thead>
-                <tr>
-                    <div class="topbar">
-                    <th>Post Title</th>
-                    <th>Post Username</th>
-                    <th>Post Time</th>
-                    </div>
-                </tr>
-            </thead>
-            <tbody>
-              {% for row in results %}
-                <tr>
-                    <td>{{ row["post_username"] }}</td>
-                    <td>{{ row["post_title"] }}</td>
-                    <td>{{ row["post_time"] }}</td>
-                </tr>
+      <div class="topbar">
+      <h1>Forum Posts</h1>
+      </div>
+      {% for row in results %}
+      <a href="thread">
+      <div class ="individual-posts">
+          <h3 class="titles">{{ row["post_title"] }}</h3>
+          <p class="usernames">Created by: {{ row["post_username"] }}</p>
+          <p class="timestamps">On: {{ row["post_time"] }}</p>
+          <p class="post-id">{{ row["post_id"] }}</p>
+      </div>
+      </a>
             {% endfor %}
-            </tbody>
-        </table>
-      <a href="forumpage" class="button">Submit Post</a>
+      <a href="forumpage">
+      <div class ="add-post-button">
+          <p class="add-post-text">Add Post</p>
+          <h2 class="add-post-plus">+</h2>
+          <p class="add-post-text">To Forum Page</p>
+      </div>
+      </a>
     </div>
 <style>
-    .button{
-        border-radius: 3px;
-        border: 2px solid;
-        background-color: white;
-        }
+    .post-id {
+        visibility: hidden;
+        position: absolute;
+    }
+    a {
+        all: unset;
+        cursor: pointer;
+    }
+    h1 {
+        text-align: center;
+    }
+    .add-post-button {
+        background-color: #00ccff;
+        display: inline-block;
+        text-align: center;
+        width: 10%;
+        height: 10%;
+        border-radius: 20%;
+        margin: 1%;
+        border-style: solid;
+        border-radius: 20%;
+        padding: 2%;
+        overflow: hidden;
+    }
+    .add-post-plus {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .add-post-text{
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .titles {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .usernames{
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .timestamps {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
     .topbar {
-        background-color: darkorange;
-        padding: 0 40px;
+        background-color: #00ccff;
     }
-        .posts {
-        background-color: beige;
+    .posts {
+        background-color: #ffffff;
     }
-        body{
-        background-color: antiquewhite;
+    .individual-posts {
+        display: inline-block;
+        background-color: #ffffbb;
+        text-align: center;
+        width: 10%;
+        height: 10%;
+        border-radius: 20%;
+        margin: 1%;
+        border-style: solid;
+        border-radius: 20%;
+        padding: 2%;
+        overflow: hidden;
+    }
+    .individual-posts:hover {
+    transform: scale(1.1);
+    }
+    body{
+        background-color: #fa8;
     }
 </style>
 </body>

@@ -23,13 +23,9 @@ def forum():
                     (post_username, post_title, post_text),
                 )
                 db.commit()
+                return redirect(url_for('forum.forumposts'))
             except db.IntegrityError:
                 error = f"Post already exists."
-
-    if request.method == 'GET':
-        db = get_db()
-        db.execute('SELECT * FROM forumPost')
-
 
     # serve forumpage.html
     return render_template("forum/forumpage.html")
@@ -37,25 +33,28 @@ def forum():
 
 @bp.route('/thread', methods=('GET', 'POST'))
 def thread():
-    db = get_db()
-    if request.method =='POST':
-        title = request.form['title']
-        username = request.form['username']
-        comment = request.form['comment']
+    if request.method == 'POST':
+        comment_username = request.form['comment_username']
+        comment_text = request.form['comment_text']
+        db = get_db()
         error = None
 
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO forumComment (title, username, comment) VALUES (?, ?, ?)",
-                    (title, username, comment),
-                )
+                    "INSERT INTO forumComments (comment_username, comment_text) VALUES (?, ?)",
+                    (comment_username, comment_text),
+                    )
                 db.commit()
-            except db.IntegrityError:
-                error = f"comment already exists."
+                return redirect(url_for('forum.thread'))
 
-    # serve server thread template
-    return render_template("forum/thread.html")
+            except db.IntegrityError:
+                error = f"Post already exists."
+
+    if request.method == 'GET':
+        db = get_db()
+        results = db.execute("SELECT * FROM forumComments")
+        return render_template("forum/thread.html", results=results)
 
 
 @bp.route('/forumposts', methods=('GET', 'POST'))

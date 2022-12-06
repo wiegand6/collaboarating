@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS forumPost;
+DROP TABLE IF EXISTS forumComments;
 
 
 CREATE TABLE user (
@@ -8,7 +10,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE forumPost (
-    post_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER PRIMARY KEY,
     post_username TEXT NOT NULL,
     post_title TEXT  NULL,
     post_text TEXT NULL,
@@ -16,9 +18,8 @@ CREATE TABLE forumPost (
 );
 
 CREATE TABLE forumComments (
-    post_id INTEGER PRIMARY KEY,
-    comment_id INTEGER AUTOINCREMENT,
+    post_reference REFERENCES forumPost(post_id),
     comment_username TEXT NOT NULL,
     comment_time TEXT DEFAULT CURRENT_TIMESTAMP,
-    comment_text VARCHAR MAX NULL
-)
+    comment_text TEXT NULL
+);

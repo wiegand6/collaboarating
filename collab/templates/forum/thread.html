@@ -8,82 +8,55 @@
 <body>
     <div class="top-bar">
         <h1>
-            <a href="forumpage">Thread</a>
+            <h1>Insert thread title here...somehow!!! :)</h1>
         </h1>
     </div>
     <div class="main">
         <div class="header">
+
+
+            {% for row in results %}
+            <div class ="individual-comments">
+                <p class="user-info">{{ row["comment_username"] }} | {{ row["comment_time"] }}</p>
+                <p class="comment-text">{{ row["comment_text"] }}</p>
+            </div>
+            {% endfor %}
         </div>
-        <input type="text" id="username" placeholder="Username" style="margin-bottom:5px;">
+            <h3>Add a comment to this thread:</h3>
+            <form method="post">
+                <input type="text" name="comment_username" id="comment_username" placeholder="Username" required>
+                <br />
+                <textarea name="comment_text" id="comment_text" placeholder="Comment text" required></textarea>
+                <br />
+                <input type="submit" id="postBtn">
+            </form>
         <br />
-        <textarea id="comment" placeholder="Comment text"></textarea>
-        <button id ="postBtn" onclick="addComment()">add comment</button>
-        <div class="comments">
-        <ol>
-        </ol>
-        </div>
-        <a href="forumpage" class="button">Back to main</a>
+        <a href="forumposts" class="button">Back to main</a>
     </div>
-    <script>
-
-
-        function addComment() {
-        if ($('#username').val().trim() == "") {
-        alert("Please fill out all required fields.");
-        };
-        if ($('#username').val().trim() != "") {
-            if ($('#comment').val().trim() != "") {
-        //vars for current date
-                const timeElapsed = Date.now();
-                const timeNow = new Date(timeElapsed)
-
-                //targets ol for injection
-                var container = document.querySelector('ol')
-
-                //html to inject
-                var postHtml = `
-                <div class="post">
-                <p>${$('#comment').val()}</p>
-                     <div class="bottom">
-                     <p class="name">${$('#username').val()}</p>
-                     <p class="timestamp">
-                     ${timeNow.toLocaleString()}
-                     </p>
-                     </div>
-                </div>
-                `
-                //inserts html at the end of the ol
-                container.insertAdjacentHTML('beforeend', postHtml);
-
-                //clears comment textarea on send
-                $('#comment').val('');
-                } else {
-                alert("Please fill out all required fields.");
-                };
-
-            };
-        };
-    </script>
     <style>
+        .individual-comments {
+            margin: 1%;
+        }
         .button{
-        border-radius: 3px;
-        border: 2px solid;
-        background-color: white;
+            border-radius: 3px;
+            border: 2px solid;
+            background-color: white;
         }
          .name
         {
-        margin-right:5px;
-        }
-        body {
-            margin: 10px 60px;
-            background-color: antiquewhite;
+            margin-right:5px;
         }
         a {
             text-decoration: none;
             color: black;
+            background-color: blue;
+        }
+        body {
+                margin: 10px 60px;
+                background-color: #fa8;
         }
         h1, h4, ol {
-            margin: 0;
+                margin: 0;
         }
         p {
             margin: 5px 0;
@@ -92,16 +65,12 @@
             width: 80%;
             height: 80px;
         }
-        button {
-            display: block;
-            margin: 10px 0;
-        }
         .top-bar {
-            background-color: darkorange;
+            background-color: #00ccff;
             padding: 0 40px;
         }
         .main {
-            background-color: beige;
+            background-color: #ffffff;
             padding: 10px 15px;
         }
         .comments {
@@ -118,11 +87,8 @@
             color: grey;
             font-size: 12px;
         }
-        .timestamp {
-            padding-right: 10px;
-        }
-        .comment-ts {
-            padding-left: 10px;
+        .user-info {
+            color: gray;
         }
     </style>
 </body>
