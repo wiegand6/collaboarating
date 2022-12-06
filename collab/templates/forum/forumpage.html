@@ -47,11 +47,28 @@
                  </div>
             </div>
             `
-            container.insertAdjacentHTML('beforeend', postHtml);
+            if ($('#title').val().trim() != "") {
+                if ($('#forumtext').val().trim() != "") {
+                    if ($('#username').val().trim() != "") {
+                        container.insertAdjacentHTML('beforeend', postHtml);
+                    };
+                };
+            };
 
-            //clears title and forumtext windows on send
-            $('#title').val('');
-            $('#forumtext').val('');
+
+
+            //error processing if fields are empty
+             if ($('#username').val().trim() == "") {
+            alert("Please fill out all required fields.")
+            } else if ($('#forumtext').val().trim() == "") {
+            alert("Please fill out all required fields.")
+            } else if ($('#title').val().trim() == "") {
+             alert("Please fill out all required fields.")
+            } else {
+                //clears title and forumtext windows only on send
+                $('#title').val('');
+                $('#forumtext').val('');
+            };
         };
 
     </script>

@@ -25,32 +25,46 @@
         <a href="forumpage" class="button">Back to main</a>
     </div>
     <script>
+
+
         function addComment() {
 
+        if ($('#username').val().trim() != "") {
+            if ($('#comment').val().trim() != "") {
         //vars for current date
-        const timeElapsed = Date.now();
-        const timeNow = new Date(timeElapsed)
+                const timeElapsed = Date.now();
+                const timeNow = new Date(timeElapsed)
 
-            //targets ol for injection
-            var container = document.querySelector('ol')
+                //targets ol for injection
+                var container = document.querySelector('ol')
 
-            //html to inject
-            var postHtml = `
-            <div class="post">
-            <p>${$('#comment').val()}</p>
-                 <div class="bottom">
-                 <p class="name">${$('#username').val()}</p>
-                 <p class="timestamp">
-                 ${timeNow.toLocaleString()}
-                 </p>
-                 </div>
-            </div>
-            `
-            //inserts html at the end of the ol
-            container.insertAdjacentHTML('beforeend', postHtml);
+                //html to inject
+                var postHtml = `
+                <div class="post">
+                <p>${$('#comment').val()}</p>
+                     <div class="bottom">
+                     <p class="name">${$('#username').val()}</p>
+                     <p class="timestamp">
+                     ${timeNow.toLocaleString()}
+                     </p>
+                     </div>
+                </div>
+                `
+                //inserts html at the end of the ol
+                container.insertAdjacentHTML('beforeend', postHtml);
 
-            //clears comment textarea on send
-            $('#comment').val('');
+                //clears comment textarea on send
+                $('#comment').val('');
+                };
+            };
+
+            //error processing if fields are empty
+
+            if ($('#username').val().trim() == "") {
+            alert("Please fill out all required fields.")
+            } else if ($('#comment').val().trim() == "") {
+            alert("Please fill out all required fields.")
+            };
         };
     </script>
     <style>
