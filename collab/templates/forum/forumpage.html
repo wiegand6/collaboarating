@@ -11,21 +11,23 @@
             Forums
         </h1>
     </div>
-    <div class="submit post">
+    <div class="main">
         <form method="post">
-        <input type="text" name="post_username" id="post_username" placeholder="Username" style="height:20px; width:150px;">
+        <input type="text" name="post_username" id="post_username" placeholder="Username" style="height:20px; width:150px;" required>
         <br />
-        <input type="text" name ="post_title" id=post_title" placeholder="Thread title" style="height:20px; width:300px; margin-top:5px;">
+        <input type="text" name ="post_title" id=post_title" placeholder="Thread title" style="height:20px; width:300px; margin-top:5px;" required>
         <br />
-        <textarea id="post_text" name="post_text" placeholder="Forum Text..." style="margin-top:5px; height:100px; width:300px;"></textarea>
+        <textarea id="post_text" name="post_text" placeholder="Forum Text..." style="margin-top:5px; height:100px; width:300px;" required></textarea>
         <input type="submit" id="postBtn">
         </form>
-        <div class="posts">
-            <ol>
-            </ol>
-        </div>
+        <a href="forumposts" class="button">Back to main</a>
     </div>
     <style>
+        .button{
+        border-radius: 3px;
+        border: 2px solid;
+        background-color: white;
+        }
         .post {
         margin: 10px;
         margin-left:0px;
