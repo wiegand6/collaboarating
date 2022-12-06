@@ -11,69 +11,20 @@
             Forums
         </h1>
     </div>
-    <div class="main">
-        <input type="text" id="username" placeholder="Username" style="height:20px; width:150px;">
+    <div class="submit post">
+        <form method="post">
+        <input type="text" name="post_username" id="post_username" placeholder="Username" style="height:20px; width:150px;">
         <br />
-        <input type="text" id="title" placeholder="Thread title" style="height:20px; width:300px; margin-top:5px;">
+        <input type="text" name ="post_title" id=post_title" placeholder="Thread title" style="height:20px; width:300px; margin-top:5px;">
         <br />
-        <textarea id="forumtext" placeholder="Forum Text..." style="margin-top:5px; height:100px; width:300px;"></textarea>
-        <button id="postBtn" onclick="addPost()">Post</button>
+        <textarea id="post_text" name="post_text" placeholder="Forum Text..." style="margin-top:5px; height:100px; width:300px;"></textarea>
+        <input type="submit" id="postBtn">
+        </form>
         <div class="posts">
             <ol>
             </ol>
         </div>
     </div>
-    <script type="text/javascript">
-        function addPost() {
-
-        //vars for current date
-        const timeElapsed = Date.now();
-        const timeNow = new Date(timeElapsed)
-
-            //targets ol for injection
-            var container = document.querySelector('ol')
-
-            //adds post to document
-            var postHtml = `
-            <div class="post">
-            <a href="thread">
-                 <h4 class="title">${$('#title').val()}</h4>
-            </a>
-                 <div class="bottom">
-                 <p class="name">${$('#username').val()}</p>
-                 <p class="timestamp">
-                 ${timeNow.toLocaleString()}
-                 </p>
-                 </div>
-            </div>
-            `
-            if ($('#title').val().trim() != "") {
-                if ($('#forumtext').val().trim() != "") {
-                    if ($('#username').val().trim() != "") {
-                        container.insertAdjacentHTML('beforeend', postHtml);
-                    };
-                };
-            };
-
-
-
-            //error processing if fields are empty
-             if ($('#username').val().trim() == "") {
-            alert("Please fill out all required fields.")
-            } else if ($('#forumtext').val().trim() == "") {
-            alert("Please fill out all required fields.")
-            } else if ($('#title').val().trim() == "") {
-             alert("Please fill out all required fields.")
-            } else {
-                //clears title and forumtext windows only on send
-                $('#title').val('');
-                $('#forumtext').val('');
-            };
-        };
-
-    </script>
-
-
     <style>
         .post {
         margin: 10px;

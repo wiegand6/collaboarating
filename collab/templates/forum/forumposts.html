@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum Posts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="posts">
+        <table class="forum posts">
+            <thead>
+                <tr>
+                    <th>Post Title</th>
+                    <th>Post Username</th>
+                    <th>Post Time</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for row in results %}
+                <tr>
+                    <td>{{ row["post_username"] }}</td>
+                    <td>{{ row["post_title"] }}</td>
+                    <td>{{ row["post_time"] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
