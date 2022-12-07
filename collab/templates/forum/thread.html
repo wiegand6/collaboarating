@@ -6,14 +6,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
+
     <div class="top-bar">
         <h1>
-            <h1>Insert thread title here...somehow!!! :)</h1>
+            <h1>{% for row in postcontent %}{{ row["post_title"] }}</h1>
         </h1>
     </div>
     <div class="main">
         <div class="header">
-
+            <h3>{{ row["post_text"] }}</h3>
+            <p class="post-username">{{ row["post_username"] }}</p>
+            <p class="post-timestamp">{{ row["post_time"] }}</p>
+            {% endfor %}
 
             {% for row in results %}
             <div class ="individual-comments">
@@ -31,9 +35,12 @@
                 <input type="submit" id="postBtn">
             </form>
         <br />
-        <a href="forumposts" class="button">Back to main</a>
+        <a href="/forum/forumposts" class="button">Back to main</a>
     </div>
     <style>
+        .post-username, .post-timestamp {
+            color: grey;
+        }
         .individual-comments {
             margin: 1%;
         }

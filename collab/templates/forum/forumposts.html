@@ -11,12 +11,11 @@
       <h1>Forum Posts</h1>
       </div>
       {% for row in results %}
-      <a href="thread">
+      <a href="thread/{{ row['post_id'] }}">
       <div class ="individual-posts">
           <h3 class="titles">{{ row["post_title"] }}</h3>
           <p class="usernames">Created by: {{ row["post_username"] }}</p>
           <p class="timestamps">On: {{ row["post_time"] }}</p>
-          <p class="post-id">{{ row["post_id"] }}</p>
       </div>
       </a>
             {% endfor %}
@@ -29,10 +28,6 @@
       </a>
     </div>
 <style>
-    .post-id {
-        visibility: hidden;
-        position: absolute;
-    }
     a {
         all: unset;
         cursor: pointer;

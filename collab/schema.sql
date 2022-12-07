@@ -10,7 +10,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE forumPost (
-    post_id INTEGER PRIMARY KEY,
+    post_id INTEGER PRIMARY KEY AUTOINCREMENT,
     post_username TEXT NOT NULL,
     post_title TEXT  NULL,
     post_text TEXT NULL,
