@@ -8,7 +8,7 @@ bp = Blueprint('forum', __name__, url_prefix='/forum')
 
 
 @bp.route('/forumpage', methods=('GET', 'POST'))
-def forum():
+def forumpage():
     if request.method == 'POST':
         post_username = request.form['post_username']
         post_title = request.form['post_title']
