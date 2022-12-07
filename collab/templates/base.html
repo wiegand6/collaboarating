@@ -46,14 +46,20 @@
                             <a class="nav-link" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Whiteboard</a>
+                            <a class="nav-link" href="{{ url_for('whiteboard.index') }}">Whiteboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Chat</a>
+                            <a class="nav-link" href="{{ url_for('chat.chatwindow') }}">Chat</a>
 
                         </li>
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="{{ url_for('forum.forumposts') }}">Forum</a>#}
+{#                        </li>#}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Forum</a>
+                            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
                         </li>
                     </ul>
                 </div>
