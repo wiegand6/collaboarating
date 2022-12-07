@@ -37,3 +37,52 @@ color: white;
 .nav-link{
 color: white;
 }
+
+input[type=submit] { align-self: start; min-width: 10em; }
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+    background-color: white;
+}
+
+nav {
+    width: 100%;
+}
+
+.whiteboard {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 105px;
+    solid #000;
+}
+
+#drawing-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: lightgray;
+}
+
+#drawing-controls span {
+    width: 15px;
+}
+
+#draw-width {
+    width: 40px;
+}
+
+#image-input {
+    width: 176px;
+}
+
+#width-control, #height-control {
+    width: 55px;
+}
