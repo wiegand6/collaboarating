@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>
+            Submit a Forum Post
+        </h1>
+    </div>
+    <div class="main">
+        <form method="post">
+        <input type="text" name="post_username" id="post_username" placeholder="Username" style="height:20px; width:150px;" required>
+        <br />
+        <input type="text" name ="post_title" id=post_title" placeholder="Thread title" style="height:20px; width:300px; margin-top:5px;" required>
+        <br />
+        <textarea id="post_text" name="post_text" placeholder="Forum Text..." style="margin-top:5px; height:100px; width:300px;" required></textarea>
+            <br />
+        <input type="submit" id="postBtn">
+        </form>
+        <br />
+        <a href="forumposts" class="button">Back to main</a>
+    </div>
+    <style>
+        .button{
+        border-radius: 3px;
+        border: 2px solid;
+        background-color: white;
+        }
+        .post {
+        margin: 10px;
+        margin-left:0px;
+        }
+        .name
+        {
+        margin-right:5px;
+        }
+        body {
+            margin: 10px 60px;
+            background-color: #fa8;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        h1, h4, ol {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .top-bar {
+            background-color: #00ccff;
+            padding: 0 40px;
+        }
+        .main {
+            background-color: #ffffff;
+            padding: 10px 15px;
+        }
+        .row {
+            padding: 5px 0;
+        }
+        .bottom {
+            display: flex;
+            color: gray;
+            font-size: 12px;
+        }
+        .timestamp {
+            padding-right: 10px;
+        }
+    </style>
+</body>
+</html>

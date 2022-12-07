@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum Posts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="posts">
+      <div class="topbar">
+      <h1>Forum Posts</h1>
+      </div>
+      {% for row in results %}
+      <a href="thread/{{ row['post_id'] }}">
+      <div class ="individual-posts">
+          <h3 class="titles">{{ row["post_title"] }}</h3>
+          <p class="usernames">Created by: {{ row["post_username"] }}</p>
+          <p class="timestamps">On: {{ row["post_time"] }}</p>
+      </div>
+      </a>
+            {% endfor %}
+      <a href="forumpage">
+      <div class ="add-post-button">
+          <p class="add-post-text">Add Post</p>
+          <h2 class="add-post-plus">+</h2>
+          <p class="add-post-text">To Forum Page</p>
+      </div>
+      </a>
+    </div>
+<style>
+    a {
+        all: unset;
+        cursor: pointer;
+    }
+    h1 {
+        text-align: center;
+    }
+    .add-post-button {
+        background-color: #00ccff;
+        display: inline-block;
+        text-align: center;
+        width: 10%;
+        height: 10%;
+        border-radius: 20%;
+        margin: 1%;
+        border-style: solid;
+        border-radius: 20%;
+        padding: 2%;
+        overflow: hidden;
+    }
+    .add-post-plus {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .add-post-text{
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .titles {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .usernames{
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .timestamps {
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+    }
+    .topbar {
+        background-color: #00ccff;
+    }
+    .posts {
+        background-color: #ffffff;
+    }
+    .individual-posts {
+        display: inline-block;
+        background-color: #ffffbb;
+        text-align: center;
+        width: 10%;
+        height: 10%;
+        border-radius: 20%;
+        margin: 1%;
+        border-style: solid;
+        border-radius: 20%;
+        padding: 2%;
+        overflow: hidden;
+    }
+    .individual-posts:hover {
+    transform: scale(1.1);
+    }
+    body{
+        background-color: #fa8;
+    }
+</style>
+</body>
+</html>

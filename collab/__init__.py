@@ -43,6 +43,10 @@ app.register_blueprint(chat.bp)
 socketio = SocketIO(app, cors_allowed_origins="*")
 socketio.run(app)
 
+from . import forum
+
+app.register_blueprint(forum.bp)
+
 
 # on the event message the code executes
 @socketio.on('message')
