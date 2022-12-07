@@ -18,7 +18,7 @@ $(function () {
     var drawShape = $('#shape-select')[0]
     /* elements for changing canvas size */
     var canvasWidth = window.innerWidth;
-    var canvasHeight = window.innerHeight-70;
+    var canvasHeight = window.innerHeight-canvasBox.top;
 
     function drawLine(c, x0, y0, x1, y1) {
         c.beginPath();
@@ -71,7 +71,7 @@ $(function () {
             context.drawImage(img, Math.min(current.x, e.pageX), Math.min(current.y, e.pageY)-canvasBox.top, Math.abs(e.pageX-current.x), Math.abs(e.pageY-current.y));
         }
         drawing = false;
-        pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+        pContext.clearRect(0, 0, canvasWidth, canvasHeight);
     }
 
     function onMouseMove(e) {
@@ -82,18 +82,18 @@ $(function () {
             current.y = e.pageY;
         }
         else if (drawShape.value == 'Straight Line'){
-            pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+            pContext.clearRect(0, 0, canvasWidth, canvasHeight);
             drawLine(pContext, current.x, current.y, e.pageX, e.pageY);
         }
         else if(drawShape.value == 'Rectangle'){
-            pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+            pContext.clearRect(0, 0, canvasWidth, canvasHeight);
             drawLine(pContext, current.x, current.y, current.x, e.pageY);
             drawLine(pContext, current.x, e.pageY, e.pageX, e.pageY);
             drawLine(pContext, e.pageX, e.pageY, e.pageX, current.y);
             drawLine(pContext, e.pageX, current.y, current.x, current.y);
             }
         else if(drawShape.value == 'Triangle'){
-            pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+            pContext.clearRect(0, 0, canvasWidth, canvasHeight);
             if((e.pageX>=current.x && e.pageY<current.y) || (e.pageX<current.x && e.pageY>=current.y)) {
                 drawLine(pContext, current.x, current.y, e.pageX, current.y);
                 drawLine(pContext, e.pageX, current.y, (current.x + e.pageX)/2, e.pageY);
@@ -106,7 +106,7 @@ $(function () {
             }
         }
         else if(drawShape.value == 'Ellipse'){
-            pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+            pContext.clearRect(0, 0, canvasWidth, canvasHeight);
             pContext.beginPath();
             pContext.ellipse(((current.x + e.pageX)/2), ((current.y + e.pageY)/2-canvasBox.top), Math.abs((current.x - e.pageX)/2), Math.abs((current.y - e.pageY)/2), 0, 0, (2 * Math.PI));
             pContext.strokeStyle = drawColor.value;
@@ -115,7 +115,7 @@ $(function () {
             pContext.closePath();
         }
         else if(drawShape.value == 'Insert Image'){
-            pContext.clearRect(0, 0, canvasWidth, (canvasHeight-canvasBox.top));
+            pContext.clearRect(0, 0, canvasWidth, canvasHeight);
             pContext.drawImage(img, Math.min(current.x, e.pageX), Math.min(current.y, e.pageY)-canvasBox.top, Math.abs(e.pageX-current.x), Math.abs(e.pageY-current.y));
         }
     }
