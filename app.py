@@ -4,7 +4,8 @@ import socketio
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    sio = socketio.AsyncServer(async_mode='asgi')
+    app = socketio.ASGIApp(sio)
 
 # app = socketio.WSGIApp()
 # socketio.run(app)
