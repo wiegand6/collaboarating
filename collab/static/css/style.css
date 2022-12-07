@@ -59,7 +59,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    top: 105px;
+    top: 103px;
     solid #000;
 }
 
@@ -80,9 +80,9 @@ nav {
 }
 
 #image-input {
-    width: 176px;
+    width: 107px;
 }
 
 #width-control, #height-control {
-    width: 55px;
+    width: 60px;
 }
