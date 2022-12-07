@@ -1,32 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Thread</title>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Collaboarating</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <!-- progress barstle -->
+    <link rel="stylesheet" href="static/css/css-circular-prog-bar.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+    <!-- font wesome stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/css-circular-prog-bar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
+
+<title>{% block title %}{% endblock %} - Collaboarating</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+{% block navbar %}
+    <div class="top_container sub_pages">
+        <!-- header section strats -->
+        <header class="header_section">
+
+                <! -- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- >
+            <nav class="navbar navbar-expand-lg bg-info">
+                <div class="container-fluid">
+
+                 <a href="#" class="navbar-brand">
+                     <img src="/static/images/logo.png" alt="CollabLogo">
+                     Collaboarating
+                 </a>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('whiteboard.index') }}">Whiteboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('chat.chatwindow') }}">Chat</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('forum.forumposts') }}" style="color: yellow;">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                        </li>
+                    </ul>
+                </div>
+
+            <! --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            </ul>
+            </nav>
+
+        </header>
+    </div>
+{% endblock %}
+                                        <!-- end header section -->
+
 <body>
 
     <div class="top-bar">
         <h1>
-            <h1>{% for row in postcontent %}{{ row["post_title"] }}</h1>
+            <h1 style="text-align: center;">{% for row in postcontent %}{{ row["post_title"] }}</h1>
         </h1>
     </div>
     <div class="main">
         <div class="header">
-            <h3>{{ row["post_text"] }}</h3>
-            <p class="post-username">{{ row["post_username"] }}</p>
-            <p class="post-timestamp">{{ row["post_time"] }}</p>
+            <h4>{{ row["post_text"] }}</h4>
+            <p class="post-username">Posted by: {{ row["post_username"] }}</p>
+            <p class="post-timestamp">At: {{ row["post_time"] }}</p>
             {% endfor %}
-
+        </div>
+            <h3>Comments:</h3>
             {% for row in results %}
             <div class ="individual-comments">
                 <p class="user-info">{{ row["comment_username"] }} | {{ row["comment_time"] }}</p>
                 <p class="comment-text">{{ row["comment_text"] }}</p>
             </div>
             {% endfor %}
-        </div>
-            <h3>Add a comment to this thread:</h3>
+
+        <label class="add-comment-link" for="comment-toggle">Add a comment to this thread</label>
+        <input type="checkbox" id="comment-toggle">
+        <div class="add-comment">
             <form method="post">
                 <input type="text" name="comment_username" id="comment_username" placeholder="Username" required>
                 <br />
@@ -34,12 +107,45 @@
                 <br />
                 <input type="submit" id="postBtn">
             </form>
+        </div>
         <br />
-        <a href="/forum/forumposts" class="button">Back to main</a>
+        <a class="back-link" href="/forum/forumposts" class="button">Back to main</a>
     </div>
     <style>
+        .add-comment-link {
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 1%;
+            font-size: 20px;
+
+        }
+        .add-comment {
+        display: none;
+        background-color: cyan;
+        padding: 1%;
+        border: 2px solid;
+        }
+        #comment-toggle{
+            display: none;
+        }
+        #comment-toggle:checked ~ .add-comment {
+            display: block;
+        }
+        .header {
+            padding: 0;
+            background-color: #ffffbb;
+            border-style: solid;
+        }
+        h3, h4{
+            padding-left: 1%;
+            padding-top: 1%;
+        }
         .post-username, .post-timestamp {
             color: grey;
+            padding-left: 1%;
+        }
+        .post-username {
+        padding-top: 1%;
         }
         .individual-comments {
             margin: 1%;
@@ -53,14 +159,10 @@
         {
             margin-right:5px;
         }
-        a {
+        .back-link {
             text-decoration: none;
             color: black;
-            background-color: blue;
-        }
-        body {
-                margin: 10px 60px;
-                background-color: #fa8;
+            border: 2px solid;
         }
         h1, h4, ol {
                 margin: 0;
@@ -73,7 +175,7 @@
             height: 80px;
         }
         .top-bar {
-            background-color: #00ccff;
+            background-color: lightgrey;
             padding: 0 40px;
         }
         .main {
@@ -86,13 +188,14 @@
         .comment {
             margin: 10px 0;
         }
-        .row {
-            padding: 5px 0;
+        #comment_username {
+            margin-bottom: 1%;
         }
-        .bottom, .top-comment {
-            display: flex;
-            color: grey;
-            font-size: 12px;
+        #comment_text {
+            margin-bottom: 1%;
+        }
+        #postBtn {
+            margin-bottom: 1%;
         }
         .user-info {
             color: gray;

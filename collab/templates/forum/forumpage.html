@@ -1,13 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Forum</title>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Collaboarating</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <!-- progress barstle -->
+    <link rel="stylesheet" href="static/css/css-circular-prog-bar.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+    <!-- font wesome stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/css-circular-prog-bar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
+<title>{% block title %}{% endblock %} - Collaboarating</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+{% block navbar %}
+    <div class="top_container sub_pages">
+        <!-- header section strats -->
+        <header class="header_section">
+
+                <! -- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- >
+            <nav class="navbar navbar-expand-lg bg-info">
+                <div class="container-fluid">
+
+                 <a href="#" class="navbar-brand">
+                     <img src="/static/images/logo.png" alt="CollabLogo">
+                     Collaboarating
+                 </a>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('whiteboard.index') }}">Whiteboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('chat.chatwindow') }}">Chat</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('forum.forumposts') }}" style="color: yellow;">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                        </li>
+                    </ul>
+                </div>
+
+            <! --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            </ul>
+            </nav>
+
+        </header>
+    </div>
+{% endblock %}
+                                        <!-- end header section -->
 <body>
     <div class="top-bar">
-        <h1>
+        <h1 style="text-align: center;">
             Submit a Forum Post
         </h1>
     </div>
@@ -38,38 +106,18 @@
         {
         margin-right:5px;
         }
-        body {
-            margin: 10px 60px;
-            background-color: #fa8;
-        }
         a {
             text-decoration: none;
             color: black;
         }
-        h1, h4, ol {
-            margin: 0;
-        }
-        p {
-            margin: 5px 0;
-        }
         .top-bar {
-            background-color: #00ccff;
+            background-color: lightgrey;
             padding: 0 40px;
         }
         .main {
             background-color: #ffffff;
             padding: 10px 15px;
-        }
-        .row {
-            padding: 5px 0;
-        }
-        .bottom {
-            display: flex;
-            color: gray;
-            font-size: 12px;
-        }
-        .timestamp {
-            padding-right: 10px;
+            margin: 10px 60px;
         }
     </style>
 </body>
