@@ -10,7 +10,7 @@ bp = Blueprint('chat', __name__, url_prefix='/chat')
 
 
 @bp.route('/chatwindow', methods=('GET', 'POST'))
-def index():
+def chatwindow():
     # give chatwindow.html
     return render_template("chat/chatwindow.html")
 
